@@ -11,7 +11,6 @@ CREATE TABLE IF NOT EXISTS Workflow_bricks (-- Если таблица не со
     PRIMARY KEY (id, id_brick) -- Составной первичный ключ из столбцов id и id_brick.
 );
 
-USE technology_source;
 CREATE TABLE IF NOT EXISTS Expendable_material (-- Если таблица не создана, создаем таблицу для учета расходных материалов.
 id_material INT PRIMARY KEY AUTO_INCREMENT,-- Создаем первичный ключ автоинкрементом.
 name_material VARCHAR(30) NOT NULL,-- Наименование расходного материала.
@@ -30,7 +29,6 @@ FOREIGN KEY (id_q, id_brick_q) REFERENCES Workflow_bricks (id, id_brick),
 FOREIGN KEY (key_material) REFERENCES Expendable_material (id_material)
 );
 
-USE technology_source;
 CREATE TABLE IF NOT EXISTS employee_list (-- Создается таблица для хранения данных об обслуживающем персонале.
 id_employee INT PRIMARY KEY AUTO_INCREMENT,-- Создаем первичный ключ для персонала автоинкрементом.
 emploee_name VARCHAR(30) NOT NULL,-- ФИО сотрудника.
@@ -39,7 +37,6 @@ date_of_employment DATE,-- Дата приема сотрудника на ра�
 education VARCHAR(30)-- Образование сотрудника.
 );
 
-USE technology_source;
 CREATE TABLE IF NOT EXISTS staff_competencies (-- Создается таблица для хранения данных о компетенциях.
 id_competence INT PRIMARY KEY AUTO_INCREMENT,-- Создаем первичный ключ для компетенций автоинкрементом.
 competence_name VARCHAR(30),-- Наименование компетенци сотрудника (id).
@@ -47,7 +44,6 @@ content_of_competence VARCHAR(130)-- Содержание (описание) к�
 );
 
 -- DROP TABLE employee_competencies;
-USE technology_source;
 CREATE TABLE IF NOT EXISTS employee_competencies (-- Создается таблица для хранения данных о компетенциях обслуживающего персонала.
 id_competence_emp INT PRIMARY KEY AUTO_INCREMENT,-- Создаем первичный ключ для компетенций персонала автоинкрементом.
 id_employee INT,-- id сотрудника, обладающего компетенциями.
@@ -59,7 +55,6 @@ FOREIGN KEY (id_competence) REFERENCES staff_competencies (id_competence)
 ON DELETE CASCADE
 );
 
-USE technology_source;
 -- DROP TABLE emergency_situation;
 CREATE TABLE IF NOT EXISTS emergency_situation (-- Если таблица не создана, создаем таблицу для хранения сведений о нештатных ситуациях.
     id INT AUTO_INCREMENT,-- Создаем столбец для подсчета суммарного количества нештатных ситуаций.
@@ -80,7 +75,8 @@ Start_time_of_the_technological_process DATETIME,-- Время начала те
 Completion_time_of_the_technological_process DATETIME,-- Время завершения технологического процесса.
 id_Wfl_bricks_1 INT,-- Создаем столбец для хранения номера шага инструкции из таблицы Workflow_bricks.
 id_brick_1 VARCHAR(30) -- Создаем столбец для хранения уникального (?) идентификатора шага инструкции.
-NOT NULL CHECK (id_brick_1 ), -- Задается ограничение на столбец. Столбец должен содержать префиксы
+NOT NULL CHECK (id_brick_1 LIKE '%maintenance%' OR '%year%' OR '%month%' OR '%week%' OR '%work%' OR '%emergency%' OR '%development%' OR '%repair%' OR '%disposal%'),
+-- Задается ограничение на столбец. Столбец должен содержать префиксы
 -- техническое обслуживание, год, месяц, неделя, работа, нештатная ситуация, разработка, ремонт, утилизация;
 -- maintenance,             year, month, week,    work,   emergency,        development, repair, disposal;
 -- префиксы идентифицируют столбец id_brick_1 как обозначение вида работ на агрегате.
@@ -100,9 +96,6 @@ CHECK (-- Устанавливаем ограничение на столбец:
  ),
 id_Wfl_bricks_2 INT,-- Создаем столбец для хранения номера 2 шага инструкции из таблицы Workflow_bricks.
 id_brick_2 VARCHAR(30)-- Создаем столбец для хранения уникального (?) идентификатора 2 шага инструкции.
-NOT NULL CHECK (id_brick_2 IN (Workflow_bricks.id_brick))
+NOT NULL CHECK (id_brick_2 LIKE '%maintenance%' OR '%year%' OR '%month%' OR '%week%' OR '%work%' OR '%emergency%' OR '%development%' OR '%repair%' OR '%disposal%')
 -- Ограничение: проверка есть-ли id_brick в таблице Workflow_bricks равный id_brick_2.
 );
-
-
-
