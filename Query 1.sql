@@ -28,13 +28,20 @@ key_material INT, -- Формируем внешний ключ для ссыл�
 FOREIGN KEY (id_q, id_brick_q) REFERENCES Workflow_bricks (id, id_brick),
 FOREIGN KEY (key_material) REFERENCES Expendable_material (id_material)
 );
+USE technology_source;
+ALTER TABLE employee_list -- Добавляем в таблицу два столлбца.
+ADD employees_nickname VARCHAR(50) NOT NULL UNIQUE,
+ADD employee_password VARCHAR(50);
 
 CREATE TABLE IF NOT EXISTS employee_list (-- Создается таблица для хранения данных об обслуживающем персонале.
 id_employee INT PRIMARY KEY AUTO_INCREMENT,-- Создаем первичный ключ для персонала автоинкрементом.
 emploee_name VARCHAR(30) NOT NULL,-- ФИО сотрудника.
 date_of_birth DATE,-- Дата рождения сотрудника.
 date_of_employment DATE,-- Дата приема сотрудника на работу.
-education VARCHAR(30)-- Образование сотрудника.
+education VARCHAR(30),-- Образование сотрудника.
+employees_nickname VARCHAR(30) NOT NULL,-- Ник сотрудника.
+employee_password VARCHAR(30),-- Пароль для входа в корпоративную систему управления.
+UNIQUE(employees_nickname)
 );
 
 CREATE TABLE IF NOT EXISTS staff_competencies (-- Создается таблица для хранения данных о компетенциях.
@@ -99,3 +106,5 @@ id_brick_2 VARCHAR(30)-- Создаем столбец для хранения �
 NOT NULL CHECK (id_brick_2 LIKE '%maintenance%' OR '%year%' OR '%month%' OR '%week%' OR '%work%' OR '%emergency%' OR '%development%' OR '%repair%' OR '%disposal%')
 -- Ограничение: проверка есть-ли id_brick в таблице Workflow_bricks равный id_brick_2.
 );
+
+
