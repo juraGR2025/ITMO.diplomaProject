@@ -1,9 +1,10 @@
+-- DROP SCHEMA `technology_source`;
 CREATE SCHEMA `technology_source` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin ;
 -- Создаем базу данных 'источник_технологии'. 
 USE technology_source;
 CREATE TABLE IF NOT EXISTS Workflow_bricks (-- Если таблица не создана, создаем таблицу.
     id INT AUTO_INCREMENT,-- Создаем столбец для подсчета суммарного количества шагов инструкции.
-    id_brick VARCHAR(30),-- Создаем столбец с уникальным (?) идентификатором обозначающим один шаг в инструкции (он же первичный ключ).
+    id_brick VARCHAR(60),-- Создаем столбец с уникальным (?) идентификатором обозначающим один шаг в инструкции (он же первичный ключ).
     step_instructions VARCHAR(300) NOT NULL,-- Столбец, содержащий описание элементарного шага инструкции.
     labor_costs FLOAT(32),-- Трудозатраты, на выполнение шага инструкции, директивно определенные инструкцией.
     minimum_person INT, -- Минимальное количество персонала, необходимое для выполнения шага инструкции.
@@ -13,7 +14,7 @@ CREATE TABLE IF NOT EXISTS Workflow_bricks (-- Если таблица не со
 
 CREATE TABLE IF NOT EXISTS Expendable_material (-- Если таблица не создана, создаем таблицу для учета расходных материалов.
 id_material INT PRIMARY KEY AUTO_INCREMENT,-- Создаем первичный ключ автоинкрементом.
-name_material VARCHAR(30) NOT NULL,-- Наименование расходного материала.
+name_material VARCHAR(80) NOT NULL,-- Наименование расходного материала.
 units_measurement VARCHAR(20), -- Единицы измерения расходного материала.
 stock_availability BOOL, -- Наличие на складе.
 quantity_in_stock FLOAT(26) -- Количество на складе.
@@ -23,15 +24,11 @@ CREATE TABLE IF NOT EXISTS Required_quantity_of_consumables (-- Создаетс
 id_quantity_of_consumables INT PRIMARY KEY AUTO_INCREMENT,-- Создаем первичный ключ автоинкрементом.
 quantity_of_material FLOAT(26),-- Количество расходного материала, требуемого при выполнении шага инструкции.
 id_q INT,-- Формируем внешний ключ для ссылок на шаги инструкци, в которых требуются расходные материалы.
-id_brick_q VARCHAR(30),-- Формируем внешний ключ для ссылок на шаги инструкци, в которых требуются расходные материалы.
+id_brick_q VARCHAR(60),-- Формируем внешний ключ для ссылок на шаги инструкци, в которых требуются расходные материалы.
 key_material INT, -- Формируем внешний ключ для ссылок на название расходного материала.
 FOREIGN KEY (id_q, id_brick_q) REFERENCES Workflow_bricks (id, id_brick),
 FOREIGN KEY (key_material) REFERENCES Expendable_material (id_material)
 );
-USE technology_source;
-ALTER TABLE employee_list -- Добавляем в таблицу два столлбца.
-ADD employees_nickname VARCHAR(50) NOT NULL UNIQUE,
-ADD employee_password VARCHAR(50);
 
 CREATE TABLE IF NOT EXISTS employee_list (-- Создается таблица для хранения данных об обслуживающем персонале.
 id_employee INT PRIMARY KEY AUTO_INCREMENT,-- Создаем первичный ключ для персонала автоинкрементом.
@@ -39,15 +36,15 @@ emploee_name VARCHAR(30) NOT NULL,-- ФИО сотрудника.
 date_of_birth DATE,-- Дата рождения сотрудника.
 date_of_employment DATE,-- Дата приема сотрудника на работу.
 education VARCHAR(30),-- Образование сотрудника.
-employees_nickname VARCHAR(30) NOT NULL,-- Ник сотрудника.
-employee_password VARCHAR(30),-- Пароль для входа в корпоративную систему управления.
+employees_nickname VARCHAR(50) NOT NULL,-- Ник сотрудника.
+employee_password VARCHAR(50),-- Пароль для входа в корпоративную систему управления.
 UNIQUE(employees_nickname)
 );
 
 CREATE TABLE IF NOT EXISTS staff_competencies (-- Создается таблица для хранения данных о компетенциях.
 id_competence INT PRIMARY KEY AUTO_INCREMENT,-- Создаем первичный ключ для компетенций автоинкрементом.
 competence_name VARCHAR(30),-- Наименование компетенци сотрудника (id).
-content_of_competence VARCHAR(130)-- Содержание (описание) компетенции сотрудника.
+content_of_competence VARCHAR(250)-- Содержание (описание) компетенции сотрудника.
 );
 
 -- DROP TABLE employee_competencies;
