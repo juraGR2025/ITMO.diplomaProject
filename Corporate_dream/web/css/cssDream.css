@@ -1,0 +1,43 @@
+body{
+background-color:#a2c6c7;
+font-family: 'Courier New', Courier, monospace;
+margin: 12px;
+position: relative;
+}
+table {
+  border: 1px solid #69c;
+  background-color: whitesmoke;
+}
+th {
+  font-weight: normal;
+  color: #039;
+  border-bottom: 1px dashed #69c;
+  padding: 12px 17px;
+}
+td {
+  color: #669;
+  padding: 7px 17px;
+}
+tr:hover td {
+  background: #ccddff;
+}
+header h2{
+margin: 5px;
+border-bottom: 2px solid rgb(210, 80, 80);
+}
+header h3{
+margin: 10px;
+}
+
+a:link    {color:rgb(52, 83, 218); text-decoration: underline;}
+a:visited {color:rgb(228, 93, 40); text-decoration:none;}
+a:hover   {color:red; text-decoration:underline;}
+a:active  {color:yellow; text-decoration:none;}
+
+#information{
+    text-decoration: none;
+    color:black;
+}  
+#indicator{
+    margin: 12px;
+}
