@@ -1,5 +1,5 @@
--- DROP SCHEMA `technology_source`;
-CREATE SCHEMA `technology_source` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin ;
+DROP SCHEMA `technology_source`;
+CREATE SCHEMA `technology_source` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 -- Создаем базу данных 'источник_технологии'. 
 USE technology_source;
 CREATE TABLE IF NOT EXISTS Workflow_bricks (-- Если таблица не создана, создаем таблицу.
@@ -35,7 +35,7 @@ id_employee INT PRIMARY KEY AUTO_INCREMENT,-- Создаем первичный 
 emploee_name VARCHAR(30) NOT NULL,-- ФИО сотрудника.
 date_of_birth DATE,-- Дата рождения сотрудника.
 date_of_employment DATE,-- Дата приема сотрудника на работу.
-education VARCHAR(30),-- Образование сотрудника.
+education VARCHAR(50),-- Образование сотрудника.
 employees_nickname VARCHAR(50) NOT NULL,-- Ник сотрудника.
 employee_password VARCHAR(50),-- Пароль для входа в корпоративную систему управления.
 UNIQUE(employees_nickname)
@@ -67,18 +67,18 @@ CREATE TABLE IF NOT EXISTS emergency_situation (-- Если таблица не 
     description_of_emergency_situation VARCHAR(300) NOT NULL,-- Столбец, содержащий описание нештатной ситуации.
     labor_emergency_situation_costs FLOAT(32),-- Трудозатраты на устранение нештатной ситуации.
     stopping_technological_process BOOL, -- Сведения об остановке технологического процесса.
-    emploee_name VARCHAR(32) NOT NULL,-- Сведения о сотрудниках, устранявших нештатную ситуацию.
+    emploee_name VARCHAR(60) NOT NULL,-- Сведения о сотрудниках, устранявших нештатную ситуацию.
     PRIMARY KEY (id) -- Первичный ключ из столбца id.
 );
 
 USE technology_source;
 CREATE TABLE IF NOT EXISTS technology_process_design (-- Создается таблица для хранения данных о технологических процессах.
 id_design INT PRIMARY KEY AUTO_INCREMENT,-- Создаем первичный ключ для описания строки отношения на множестве элементарных технологических процессов.
-identification_label VARCHAR(30), -- Идентификационная метка группы шагов инструкции, составляющих завершенный технологический процесс.
+identification_label VARCHAR(50), -- Идентификационная метка группы шагов инструкции, составляющих завершенный технологический процесс.
 Start_time_of_the_technological_process DATETIME,-- Время начала технологического процесса.
 Completion_time_of_the_technological_process DATETIME,-- Время завершения технологического процесса.
 id_Wfl_bricks_1 INT,-- Создаем столбец для хранения номера шага инструкции из таблицы Workflow_bricks.
-id_brick_1 VARCHAR(30) -- Создаем столбец для хранения уникального (?) идентификатора шага инструкции.
+id_brick_1 VARCHAR(80) -- Создаем столбец для хранения уникального (?) идентификатора шага инструкции.
 NOT NULL CHECK (id_brick_1 LIKE '%maintenance%' OR '%year%' OR '%month%' OR '%week%' OR '%work%' OR '%emergency%' OR '%development%' OR '%repair%' OR '%disposal%'),
 -- Задается ограничение на столбец. Столбец должен содержать префиксы
 -- техническое обслуживание, год, месяц, неделя, работа, нештатная ситуация, разработка, ремонт, утилизация;
@@ -99,7 +99,7 @@ CHECK (-- Устанавливаем ограничение на столбец:
  logical_operator_of_the_instruction_execution_sequence = 17 -- 17 операция ei выполняется одновременно с ej.
  ),
 id_Wfl_bricks_2 INT,-- Создаем столбец для хранения номера 2 шага инструкции из таблицы Workflow_bricks.
-id_brick_2 VARCHAR(30)-- Создаем столбец для хранения уникального (?) идентификатора 2 шага инструкции.
+id_brick_2 VARCHAR(80)-- Создаем столбец для хранения уникального (?) идентификатора 2 шага инструкции.
 NOT NULL CHECK (id_brick_2 LIKE '%maintenance%' OR '%year%' OR '%month%' OR '%week%' OR '%work%' OR '%emergency%' OR '%development%' OR '%repair%' OR '%disposal%')
 -- Ограничение: проверка есть-ли id_brick в таблице Workflow_bricks равный id_brick_2.
 );
