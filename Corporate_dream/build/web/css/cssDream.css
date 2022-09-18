@@ -3,6 +3,7 @@ background-color:#a2c6c7;
 font-family: 'Courier New', Courier, monospace;
 margin: 12px;
 position: relative;
+
 }
 table {
   border: 1px solid #69c;
@@ -21,12 +22,140 @@ td {
 tr:hover td {
   background: #ccddff;
 }
+tr:visited td {
+  background:rgb(228, 93, 40);
+}
+tr:active td {
+  color:yellow;
+}
 header h2{
 margin: 5px;
 border-bottom: 2px solid rgb(210, 80, 80);
 }
 header h3{
 margin: 10px;
+}
+body h1{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+fieldset {
+ background: #ccddff; /* Цвет фона */
+ color: rgb(25, 23, 29); /* Цвет текста */
+ padding: 10px;/*  Поля вокруг текста */
+ border-radius: 4px; /* Уголки */
+ border: 2px solid rgb(44, 8, 143);
+ margin: 4px;
+ max-width: 80%;
+ /*position: relative;*/
+ display: inline-block;
+}
+input[type=checkbox] {
+    transform: scale(1.0);
+    font-size: 110%;
+    display: inline;
+}
+fieldset h3{
+  font-family: sans-serif;
+
+}
+label{
+  display: inline-block;
+  clear: left;
+  width: 50px;
+  text-align: right;
+}
+
+
+.login {
+margin: 20px auto;
+width: 300px;
+}
+.login-screen {
+background-color: #FFF;
+padding: 20px;
+border-radius: 5px
+}
+
+.app-title {
+text-align: center;
+color: #777;
+}
+
+.login-form {
+text-align: center;
+}
+.control-group {
+margin-bottom: 10px;
+}
+
+input {
+text-align: center;
+background-color: #ECF0F1;
+border: 2px solid transparent;
+border-radius: 3px;
+font-size: 16px;
+font-weight: 200;
+padding: 10px 0;
+width: 250px;
+transition: border .5s;
+}
+
+input:focus {
+border: 2px solid #3498DB;
+box-shadow: none;
+}
+
+.btn {
+  border: 2px solid transparent;
+  background: #3498DB;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 25px;
+  padding: 10px 0;
+  text-decoration: none;
+  text-shadow: none;
+  border-radius: 3px;
+  box-shadow: none;
+  transition: 0.25s;
+  display: block;
+  width: 250px;
+  margin: 0 auto;
+}
+
+.btn:hover {
+  background-color: #2980B9;
+}
+.tabelBtn{
+  border: 2px solid transparent;
+  background: #db5f25;
+  color: whitesmoke;
+  font-size: 14px;
+  text-decoration: none;
+  text-shadow: none;
+  border-radius: 4px;
+  box-shadow: none;
+  transition: 0.25s;
+  display: block;
+  width: 120px;
+  height: 40px;
+  margin: auto;
+}
+.tabelBtn:hover{
+    background-color: #ec2a14;
+}
+.login-link {
+  font-size: 12px;
+  color: #444;
+  display: block;
+  margin-top: 12px;
+}
+input.WorkCheckbox{
+ height:15px;
+ width:15px;
+ color:#090;
+ background-color:#ddd;
+ margin-right:10px;
 }
 
 a:link    {color:rgb(52, 83, 218); text-decoration: underline;}
@@ -41,3 +170,7 @@ a:active  {color:yellow; text-decoration:none;}
 #indicator{
     margin: 12px;
 }
+#WorkCheckbox{
+    
+}
+

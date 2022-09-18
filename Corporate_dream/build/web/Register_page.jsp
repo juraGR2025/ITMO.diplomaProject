@@ -4,7 +4,9 @@
 <html lang="ru">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <link rel="stylesheet" href="./css/cssDream.css"/>
+        <style type="text/css">
+    <%@include file="./css/cssDream.css" %>
+        </style>
         <title>Registration form</title>
     </head>
     <body onload="negativeReaction()">

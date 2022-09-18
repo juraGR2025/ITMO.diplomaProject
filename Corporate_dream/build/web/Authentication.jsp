@@ -4,14 +4,16 @@
 <html lang="ru">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <link rel="stylesheet" href="./css/cssDream.css"/>
+        <style type="text/css">
+    <%@include file="./css/cssDream.css" %>
+        </style>
         <title>Authentication</title>
     </head>
     <body>
         <%
             String submitBtn = request.getParameter("submitBtn");//Получаем значение параметра кнопки input id="authorization" name="submitBtn".
                         
-            if(submitBtn.equals("    Accept    ")){
+            if(submitBtn.equals("Accept")){
                 String id = request.getParameter("idEmp");
                 String Password = request.getParameter("Password");
                 try{

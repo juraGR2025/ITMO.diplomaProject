@@ -7,6 +7,9 @@
 <html lang="ru">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <style type="text/css">
+    <%@include file="./css/cssDream.css" %>
+        </style>
         <title>JSP Page</title>
     </head>
     <body>
