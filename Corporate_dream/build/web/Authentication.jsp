@@ -10,6 +10,7 @@
         <title>Authentication</title>
     </head>
     <body>
+        <a href="./index.html"><img id= "go-home" src="./Dom.png"></a>
         <%
             String submitBtn = request.getParameter("submitBtn");//Получаем значение параметра кнопки input id="authorization" name="submitBtn".
                         

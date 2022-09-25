@@ -15,9 +15,9 @@
         <h3>User registration</h3>
         <h4>Заполните регистрационную форму:</h4>
           <form name="employeeRegistration" method="post" action="Registration.jsp">
-              <table>
+              <table name="employeeRegistration" >
                   <tr><!-- Заполняем таблицу employee_list. -->
-                      <td><label>Фамилия, имя, отчество:</label></td>
+                      <td name="employeeRegistration"><label>Фамилия, имя, отчество:</label></td>
                       <td><input type="text" name="FioEmp" value=""/><br></td><!-- Поле ввода emploee_name VARCHAR(30). -->
                   </tr><!--Конец строки в таблице.-->
                   <tr><!-- Заполняем таблицу employee_list. -->
@@ -33,7 +33,7 @@
                       <td><input type="text" name="educationEmp" value=""/><br></td><!-- Поле ввода education VARCHAR(30). -->
                   </tr><!--Конец строки в таблице.-->
                   <tr><!-- Заполняем таблицу employee_list. -->
-                      <td><label>Nickname:</label></td>
+                      <td><label>Username:</label></td>
                       <td><input type="text" name="nicknameEmp" value=""/><br></td><!-- Поле ввода employees_nickname VARCHAR(50). -->
                   </tr><!--Конец строки в таблице.-->
                   <tr>

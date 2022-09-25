@@ -1,5 +1,5 @@
 body{
-background-color:#a2c6c7;
+background-color:#a5c8c7;
 font-family: 'Courier New', Courier, monospace;
 margin: 12px;
 position: relative;
@@ -17,7 +17,7 @@ th {
 }
 td {
   color: #669;
-  padding: 7px 17px;
+  padding: 7px 10px;
 }
 tr:hover td {
   background: #ccddff;
@@ -47,7 +47,6 @@ fieldset {
  border: 2px solid rgb(44, 8, 143);
  margin: 4px;
  max-width: 80%;
- /*position: relative;*/
  display: inline-block;
 }
 input[type=checkbox] {
@@ -66,7 +65,52 @@ label{
   text-align: right;
 }
 
+table[name="insertData"]{
+    width: 60%;
+}
 
+table[name="employeeRegistration"]{
+    width: 30%;
+}
+
+td[name="employeeRegistration"] {
+    width: 30%;
+    padding: 10px;
+}
+
+input[name="id_brick"] {
+    width: 100%;
+}
+
+textarea[name="step_instructions"] {
+    width: 100%;
+}
+
+input[name="labor_costs"] {
+    width: 100%;
+}
+
+input[name="minimum_person"] {
+    width: 100%;
+}
+
+input[name="maximum_person"] {
+    width: 100%;
+}
+td[name="insertData"] {
+    width: 30%;
+    padding: 10px;
+}
+
+label[name="insertData"] {
+    width: 100%;
+    padding: 8px;
+}
+caption {
+   color: blueviolet;
+   text-align: center;
+   font-size: 18px;
+}
 .login {
 margin: 20px auto;
 width: 300px;
@@ -127,6 +171,7 @@ box-shadow: none;
   background-color: #2980B9;
 }
 .tabelBtn{
+    height: 100%;
   border: 2px solid transparent;
   background: #db5f25;
   color: whitesmoke;
@@ -134,12 +179,14 @@ box-shadow: none;
   text-decoration: none;
   text-shadow: none;
   border-radius: 4px;
-  box-shadow: none;
+  box-shadow: 10px;
   transition: 0.25s;
-  display: block;
   width: 120px;
   height: 40px;
   margin: auto;
+  position: relative;
+   display: flex;
+  justify-content: center;
 }
 .tabelBtn:hover{
     background-color: #ec2a14;
@@ -170,7 +217,3 @@ a:active  {color:yellow; text-decoration:none;}
 #indicator{
     margin: 12px;
 }
-#WorkCheckbox{
-    
-}
-
