@@ -103,5 +103,8 @@ id_brick_2 VARCHAR(80)-- Создаем столбец для хранения �
 NOT NULL CHECK (id_brick_2 LIKE '%maintenance%' OR '%year%' OR '%month%' OR '%week%' OR '%work%' OR '%emergency%' OR '%development%' OR '%repair%' OR '%disposal%')
 -- Ограничение: проверка есть-ли id_brick в таблице Workflow_bricks равный id_brick_2.
 );
-
-
+USE technology_source;
+CREATE TABLE IF NOT EXISTS technology_process_code (-- Создается таблица для хранения кодов последовательност выполнения операций.
+id_code INT PRIMARY KEY AUTO_INCREMENT,-- Создаем первичный ключ для описания кодовой строки отношения на множестве элементарных технологических процессов.
+identification_code_label VARCHAR(80) -- Код связанных операций.
+)
